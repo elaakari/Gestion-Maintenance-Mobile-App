@@ -77,7 +77,4 @@ jobs:
           cd project_essai_flutter  
           flutter test
 
-      - name: Build apk
-        run: |
-          cd project_essai_flutter  
-          flutter build apk --split-per-abi
+  
