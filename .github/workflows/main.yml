@@ -60,11 +60,11 @@ jobs:
       - name: Navigate to project directory
         run: cd project_essai_flutter
 
-      # Étape 4: Créer le fichier test.dart s'il n'existe pas
+      # Étape 4: Créer le fichier test_file_test.dart s'il n'existe pas
       - name: Create test file if not exists
         run: |
-          if (!(Test-Path "project_essai_flutter/test/test.dart")) {
-            New-Item -ItemType File -Path "project_essai_flutter/test/test.dart" -Value "void main() {}"
+          if (!(Test-Path "project_essai_flutter/test/test_file_test.dart")) {
+            New-Item -ItemType File -Path "project_essai_flutter/test/test_file_test.dart" -Value "void main() {}"
           }
 
       - name: Install dependencies
