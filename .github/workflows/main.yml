@@ -50,16 +50,22 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.x'  # Spécifiez la version de Flutter utilisée
+          flutter-version: '3.22.3'   
 
-      # Étape 3: Installer les dépendances Flutter
+      - name: Navigate to project directory
+        run: cd project_essai_flutter
+
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          cd project_essai_flutter  
+          flutter pub get
 
-      # Étape 4: Exécuter les tests Flutter
       - name: Run tests
-        run: flutter test
+        run: |
+          cd project_essai_flutter  
+          flutter test
 
-      # Étape 5: Construire le projet Flutter (optionnel, si vous voulez vérifier le build)
-      - name: Build Flutter app
-        run: flutter build apk --release
+      - name: Build apk
+        run: |
+          cd project_essai_flutter  
+          flutter build apk --release
