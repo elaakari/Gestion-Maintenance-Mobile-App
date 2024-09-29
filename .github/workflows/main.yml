@@ -55,7 +55,7 @@ jobs:
       # Étape 3: Créer le dossier 'test' s'il n'existe pas
       - name: Create test folder if not exists
         run: |
-          if [ ! -d "project_essai_flutter/test" ]; then
+          if ( ! -d "project_essai_flutter/test" ); then
             mkdir project_essai_flutter/test
           fi
 
