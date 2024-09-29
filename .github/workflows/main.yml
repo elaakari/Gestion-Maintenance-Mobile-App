@@ -64,7 +64,7 @@ jobs:
       - name: Create test file if not exists
         run: |
           if (!(Test-Path "project_essai_flutter/test/test_file_test.dart")) {
-            New-Item -ItemType File -Path "project_essai_flutter/test/test_file_test.dart" -Value "void main() {}"
+            New-Item -ItemType File -Path "project_essai_flutter/test/test_file_test.dart" -Value "import 'package:flutter_test/flutter_test.dart'; void main() { test('Test simple', () { expect(true, isTrue); }); }"
           }
 
       - name: Install dependencies
