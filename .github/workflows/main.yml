@@ -27,7 +27,7 @@ jobs:
 
       # Étape 3: Restaurer les dépendances backend
       - name: Restore dependencies
-        run: dotnet restore ./backend
+        run: dotnet restore ./project_essai/project_essai
 
       # Étape 4: Construire le projet backend
       - name: Build backend
