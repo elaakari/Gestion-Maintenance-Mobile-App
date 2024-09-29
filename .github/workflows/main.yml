@@ -1,0 +1,65 @@
+name: CI/CD Pipeline for .NET and Flutter
+
+# Déclenchement du workflow sur push ou pull request sur la branche principale
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job pour tester et construire le backend .NET
+  backend:
+    runs-on: windows-latest  # Choisissez windows ou ubuntu selon votre préférence
+
+    steps:
+      # Étape 1: Checkout du code source
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Étape 2: Installer .NET Core (vérifiez la version de .NET)
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.x'  # Spécifiez la version .NET utilisée
+
+      # Étape 3: Restaurer les dépendances backend
+      - name: Restore dependencies
+        run: dotnet restore ./backend
+
+      # Étape 4: Construire le projet backend
+      - name: Build backend
+        run: dotnet build --configuration Release ./backend
+
+      # Étape 5: Exécuter les tests backend
+      - name: Run tests
+        run: dotnet test ./backend
+
+  # Job pour tester et construire le frontend Flutter
+  frontend:
+    runs-on: windows-latest  # Vous pouvez aussi utiliser macos-latest ou ubuntu-latest
+
+    steps:
+      # Étape 1: Checkout du code source
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Étape 2: Installer Flutter SDK
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'  # Spécifiez la version de Flutter utilisée
+
+      # Étape 3: Installer les dépendances Flutter
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Étape 4: Exécuter les tests Flutter
+      - name: Run tests
+        run: flutter test
+
+      # Étape 5: Construire le projet Flutter (optionnel, si vous voulez vérifier le build)
+      - name: Build Flutter app
+        run: flutter build apk --release
