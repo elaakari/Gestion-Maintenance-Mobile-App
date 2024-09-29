@@ -12,7 +12,7 @@ on:
 jobs:
   # Job pour tester et construire le backend .NET
   backend:
-    runs-on: windows-latest  # Choisissez windows ou ubuntu selon votre préférence
+    runs-on: windows-latest   
 
     steps:
       # Étape 1: Checkout du code source
@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.x'  # Spécifiez la version .NET utilisée
+          dotnet-version: '8.x'   
 
       # Étape 3: Restaurer les dépendances backend
       - name: Restore dependencies
@@ -31,15 +31,15 @@ jobs:
 
       # Étape 4: Construire le projet backend
       - name: Build backend
-        run: dotnet build --configuration Release ./backend
+        run: dotnet build --configuration Release ./project_essai/project_essai
 
       # Étape 5: Exécuter les tests backend
       - name: Run tests
-        run: dotnet test ./backend
+        run: dotnet test ./project_essai/project_essai
 
   # Job pour tester et construire le frontend Flutter
   frontend:
-    runs-on: windows-latest  # Vous pouvez aussi utiliser macos-latest ou ubuntu-latest
+    runs-on: windows-latest  
 
     steps:
       # Étape 1: Checkout du code source
