@@ -20,22 +20,18 @@ jobs:
 
     - name: Installer les dépendances
       run: |
-        # Si vous utilisez Flutter
-        flutter pub get
+         flutter pub get
         
-        # Pour un projet Node.js
-        # npm install
+        
 
     - name: Exécuter les tests
       run: |
-        # Pour Flutter
-        flutter test
+         flutter test
         
-        # Pour un projet Node.js
-        # npm test
+       
 
     - name: Déboguer les tests échoués
-      if: failure() # Ne s'exécute que si les tests échouent
+      if: failure()  
       run: |
         # Afficher les logs
         echo "Les tests ont échoué. Voici les logs :"
