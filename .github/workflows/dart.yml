@@ -26,9 +26,8 @@ jobs:
 
       - name: Install dependencies
         run: 
-          cd project_essai_flutter 
-          dart pub get
-
+          cd project_essai_flutter && dart pub get
+          
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
       #   run: dart format --output=none --set-exit-if-changed .
